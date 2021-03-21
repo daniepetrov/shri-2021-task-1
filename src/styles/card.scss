@@ -1,0 +1,113 @@
+.card {
+  $self: &;
+  max-width: 104px;
+  display: flex;
+  padding: 20px 4px 16px;
+  flex-direction: column;
+  border-radius: 6px;
+  text-align: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+
+  &__avatar {
+    position: relative;
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    background-color: var(--color-light-grey);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__avatar + &__content {
+    margin-top: 6px;
+  }
+
+  &__name {
+    @include text-body;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -ms-line-clamp: 2;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    display: -webkit-box;
+    display: box;
+    word-wrap: break-word;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+  }
+
+  &__name + &__caption {
+    margin-top: 4px;
+  }
+
+  &__caption {
+    @include text-caption;
+    color: var(--color-light-grey);
+
+    &--strange {
+      color: var(--color-text-primary);
+    }
+  }
+
+  &__emoji {
+    font-size: 32px;
+    line-height: 1;
+    z-index: 1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -2px;
+  }
+
+  &:hover {
+    background-image: var(--grad-secondary-1);
+    box-shadow: var(--shadow-secondary-1);
+  }
+
+  &--active,
+  &:active {
+    background-image: var(--grad-primary-1);
+    box-shadow: var(--shadow-primary-1);
+
+    &:hover {
+      background-image: var(--grad-primary-1);
+      box-shadow: var(--shadow-primary-1);
+    }
+  }
+
+  &--horizontal {
+    flex-direction: row;
+    max-width: none;
+    text-align: left;
+    padding: 12px;
+
+    #{$self}__avatar {
+      width: 40px;
+      height: 40px;
+    }
+
+    #{$self}__name {
+      word-spacing: 0;
+    }
+
+    #{$self}__avatar + #{$self}__content {
+      margin-top: 0;
+      margin-left: 14px;
+    }
+
+    &#{$self}--active {
+      background-image: none;
+      box-shadow: none;
+
+      &:hover {
+        background-image: none;
+        box-shadow: none;
+      }
+    }
+  }
+}

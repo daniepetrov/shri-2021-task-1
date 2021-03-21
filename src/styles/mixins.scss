@@ -1,0 +1,49 @@
+// theme mixins
+
+@mixin landscape() {
+  @media screen and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin container() {
+  padding: 0 24px;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 320px;
+}
+
+@mixin text-heading() {
+  font-size: 1.875rem;
+  line-height: 1.0666;
+  font-weight: bold;
+}
+
+@mixin text-subheading() {
+  font-size: 1.25rem;
+  line-height: 1.1;
+  font-weight: bold;
+}
+
+@mixin text-caption() {
+  font-size: 0.875rem;
+  line-height: 1.14285;
+  font-weight: normal;
+}
+
+@mixin text-body() {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+@mixin light() {
+  @at-root body.theme_light #{&} {
+    @content;
+  }
+}
+
+@mixin dark() {
+  @at-root body.theme_dark #{&} {
+    @content;
+  }
+}

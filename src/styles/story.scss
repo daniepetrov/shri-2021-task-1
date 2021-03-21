@@ -1,0 +1,38 @@
+.story {
+  height: 100%;
+}
+
+.story__container {
+  @include container;
+  height: inherit;
+}
+
+.story__content {
+  padding-top: 20px;
+}
+
+.story__heading {
+  @include text-heading;
+  margin-bottom: 8px;
+
+  @include landscape() {
+    text-align: center;
+  }
+}
+
+.story__caption {
+  @include text-body;
+  color: var(--color-light-grey);
+  margin-bottom: 20px;
+
+  @media (min-width: 360px) {
+    margin-bottom: 24px;
+  }
+
+  @include landscape() {
+    text-align: center;
+    @media (min-height: 360px) {
+      margin-bottom: 24px;
+    }
+  }
+}

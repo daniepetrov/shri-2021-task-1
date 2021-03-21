@@ -1,0 +1,24 @@
+.arrow-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  width: 64px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: var(--color-button);
+
+  &:disabled {
+    color: var(--color-button-disabled);
+  }
+
+  &--reversed {
+    transform: rotate(180deg);
+  }
+}

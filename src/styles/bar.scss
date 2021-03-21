@@ -1,0 +1,33 @@
+.bar {
+  border-radius: 6px;
+  padding: 16px 8px;
+  background-image: var(--grad-secondary-2);
+  box-shadow: var(--shadow-secondary-1);
+
+  &--active {
+    background-image: var(--grad-primary-1);
+    box-shadow: var(--shadow-primary-1);
+  }
+
+  &__number {
+    @include text-heading;
+    display: block;
+    padding-top: 2px;
+    text-align: center;
+    margin-bottom: 16px;
+
+    &--bordered {
+      padding-top: 6px;
+      width: 100%;
+      max-width: 60px;
+
+      @include light() {
+        border-top: 1px solid var(--color-text-primary);
+      }
+
+      @include dark() {
+        border-top: 1px solid var(--color-text-secondary);
+      }
+    }
+  }
+}
