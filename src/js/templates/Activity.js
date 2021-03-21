@@ -1,4 +1,4 @@
-const html = String.raw
+import { html } from '../utils'
 
 const Activity = (data) => {
   return html`

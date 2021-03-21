@@ -1,6 +1,7 @@
 import Leaders from './templates/Leaders'
 import Vote from './templates/Vote'
 import Chart from './templates/Chart'
+import Activity from './templates/Activity'
 import Defs from './components/Defs'
 
 const DEFAULT_THEME = 'dark'
@@ -8,6 +9,7 @@ const COMPONENT_MAP = {
   leaders: Leaders,
   vote: Vote,
   chart: Chart,
+  activity: Activity,
 }
 
 window.renderTemplate = (alias, data) => {

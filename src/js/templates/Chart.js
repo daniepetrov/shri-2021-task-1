@@ -1,4 +1,4 @@
-const html = String.raw
+import { html } from '../utils'
 
 const Chart = (data) => {
   return html`

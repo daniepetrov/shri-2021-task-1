@@ -12,3 +12,5 @@ export const sortUsers = (users, sliceCount) => {
 }
 
 export const getIndex = (user, users) => users.findIndex((item) => item === user) + 1
+
+export const html = String.raw

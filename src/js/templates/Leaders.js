@@ -1,7 +1,5 @@
-import UserCard from './UserCard'
-import { sortUsers } from './../utils'
-
-const html = String.raw
+import UserCard from '../components/UserCard'
+import { sortUsers, html } from './../utils'
 
 Array.prototype.mapr = function (...args) {
   return this.map(...args).join('')

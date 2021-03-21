@@ -1,10 +1,10 @@
-const html = String.raw
+import { html } from '../utils'
 
 const Defs = (alias) => {
   switch (alias) {
     case 'vote':
       return html`
-        <div class="defs">
+        <div class="defs" style="height: 0;position: absolute;opacity: 0;">
           <svg
             fill="none"
             viewBox="0 0 64 64"
@@ -26,7 +26,7 @@ const Defs = (alias) => {
       `
     case 'activity':
       return html`
-        <div class="defs">
+        <div class="defs" style="height: 0;position: absolute;opacity: 0;">
           <svg
             fill="none"
             viewBox="0 0 64 64"
