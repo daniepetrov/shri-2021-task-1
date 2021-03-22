@@ -14,3 +14,7 @@ export const sortUsers = (users, sliceCount) => {
 export const getIndex = (user, users) => users.findIndex((item) => item === user) + 1
 
 export const html = String.raw
+
+Array.prototype.mapj = function (...args) {
+  return this.map(...args).join('')
+}
