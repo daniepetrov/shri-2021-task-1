@@ -1,0 +1,22 @@
+.activity {
+}
+
+.isometric-line {
+  display: flex;
+  align-items: flex-end;
+
+  svg {
+    display: block;
+  }
+
+  &:nth-of-type(even) {
+  }
+
+  &:nth-of-type(odd) {
+    margin-left: 17px;
+  }
+
+  & + & {
+    margin-top: -25px;
+  }
+}
