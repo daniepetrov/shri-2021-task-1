@@ -52,23 +52,23 @@ module.exports = {
 
     // Prettier configuration
     new PrettierPlugin(),
-    new FaviconsWebpackPlugin({
-      logo: paths.src + '/logo.png',
-      outputPath: '.',
-      prefix: '.',
-      favicons: {
-        icons: {
-          android: false,
-          appleIcon: false,
-          appleStartup: false,
-          coast: false,
-          favicons: true,
-          firefox: false,
-          windows: false,
-          yandex: false,
-        },
-      },
-    }),
+    // new FaviconsWebpackPlugin({
+    //   logo: paths.src + '/logo.png',
+    //   outputPath: '.',
+    //   prefix: '.',
+    //   favicons: {
+    //     icons: {
+    //       android: false,
+    //       appleIcon: false,
+    //       appleStartup: false,
+    //       coast: false,
+    //       favicons: true,
+    //       firefox: false,
+    //       windows: false,
+    //       yandex: false,
+    //     },
+    //   },
+    // }),
   ],
 
   // Determine how modules within the project are treated

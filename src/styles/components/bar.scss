@@ -1,9 +1,11 @@
 .bar {
   border-radius: 6px;
   padding: 16px 8px;
+  height: 100%;
   background-image: var(--grad-secondary-2);
   box-shadow: var(--shadow-secondary-1);
 
+  [class*='active'] &,
   &--active {
     background-image: var(--grad-primary-1);
     box-shadow: var(--shadow-primary-1);

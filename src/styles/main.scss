@@ -16,11 +16,11 @@ body {
   line-height: 1.125;
   color: var(--color-text-primary);
   overflow: hidden;
-  // position: absolute;
-  // left: 0;
-  // right: 0;
-  // bottom: 0;
-  // top: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
 
   &.theme_light {
     --color-text-primary: var(--color-black);

@@ -1,7 +1,7 @@
-import Leaders from './templates/Leaders'
-import Vote from './templates/Vote'
-import Chart from './templates/Chart'
-import Activity from './templates/Activity'
+import Leaders from './stories/Leaders'
+import Vote from './stories/Vote'
+import Chart from './stories/Chart'
+import Activity from './stories/Activity'
 import Defs from './components/Defs'
 
 const DEFAULT_THEME = 'dark'

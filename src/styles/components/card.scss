@@ -22,6 +22,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include light() {
+      background-image: url('../public/images/no-image-light.png');
+
+      @include retina() {
+        background-image: url('../public/images/no-image-light.png');
+      }
+    }
+
+    @include dark() {
+      background-image: url('../public/images/no-image-dark.png');
+    }
   }
 
   &__avatar + &__content {
@@ -70,14 +82,24 @@
     box-shadow: var(--shadow-secondary-1);
   }
 
-  &--active,
-  &:active {
+  &--active {
     background-image: var(--grad-primary-1);
     box-shadow: var(--shadow-primary-1);
 
     &:hover {
       background-image: var(--grad-primary-1);
       box-shadow: var(--shadow-primary-1);
+    }
+  }
+
+  &--blank {
+    background-image: none;
+    box-shadow: none;
+    cursor: auto;
+
+    &:hover {
+      background-image: none;
+      box-shadow: none;
     }
   }
 
