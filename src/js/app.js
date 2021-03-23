@@ -26,7 +26,8 @@ body.classList.add(`theme_${theme}`)
 fetch('/data/data.json')
   .then((res) => res.json())
   .then((data) => {
-    const alias = Boolean(data[slide - 1]) ? data[slide - 1].alias : data[0].alias
-    const storyData = data.find((item) => item.alias === alias).data
+    const index = slide - 1
+    const alias = Boolean(data[index]) ? data[index].alias : data[0].alias
+    const storyData = Boolean(data[index]) ? data[index].data : data[0].data
     body.innerHTML = window.renderTemplate(alias, storyData)
   })

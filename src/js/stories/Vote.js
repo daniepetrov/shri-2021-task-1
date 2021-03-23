@@ -1,14 +1,17 @@
-import Card from '../components/Card'
-import { sortUsers, getIndex, html } from './../utils'
+import { html } from './../utils'
 
 const Vote = (data) => {
   const VOTE_COUNT = 8
   const users = data.users.slice(0, VOTE_COUNT)
+  const selectedUserIndex = data.users.findIndex((user) => user.id === data.selectedUserId) || false
+  const selectedUser = selectedUserIndex && data.users[selectedUserIndex]
+
+  const If = (condition, render) => (condition ? render : '')
 
   return html`
     <div class="story vote">
       <div class="story__container">
-        <div class="story__content content">
+        <div class="story__content vote__content">
           <div class="story__heading">${data.title}</div>
           <h2 class="story__caption">${data.subtitle}</h2>
           <!-- <button class="arrow-button">
@@ -23,14 +26,22 @@ const Vote = (data) => {
           </button> -->
           <ul class="vote__grid">
             ${users.mapj(
-              (user) =>
+              (user, i) =>
                 html`
-                  <li
-                    class="vote__item ${getIndex(user, data.users) === 1
-                      ? 'vote__item--active'
-                      : ''}"
-                  >
-                    ${Card({ data: user })}
+                  <li class="vote__item ${i === 1 ? 'vote__item--active' : ''}">
+                    <div
+                      class="card ${If(selectedUser && i === selectedUserIndex, 'card--active')}"
+                    >
+                      ${selectedUser && i === selectedUserIndex
+                        ? html`<div class="card__emoji">👍</div>`
+                        : ''}
+                      <div class="card__avatar">
+                        <img src=${`/images/1x/${user.avatar}`} alt="" class="card__avatar-img" />
+                      </div>
+                      <div class="card__content">
+                        <div class="card__name">${user.name}</div>
+                      </div>
+                    </div>
                   </li>
                 `,
             )}

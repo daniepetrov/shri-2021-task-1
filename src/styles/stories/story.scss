@@ -5,11 +5,16 @@
 .story__container {
   @include container;
   height: inherit;
+  max-width: 1280px;
 }
 
 .story__content {
   padding-top: 20px;
   height: inherit;
+
+  @include media-sphone() {
+    padding-top: 16px;
+  }
 }
 
 .story__heading {
@@ -19,21 +24,22 @@
   @include landscape() {
     text-align: center;
   }
+
+  @include media-sphone() {
+    font-size: 1.5rem;
+  }
 }
 
 .story__caption {
   @include text-body;
   color: var(--color-light-grey);
-  margin-bottom: 20px;
-
-  @media (min-width: 360px) {
-    margin-bottom: 24px;
-  }
+  margin-bottom: 5px;
 
   @include landscape() {
     text-align: center;
-    @media (min-height: 360px) {
-      margin-bottom: 24px;
-    }
+  }
+
+  @include media-sphone() {
+    font-size: 0.875rem;
   }
 }

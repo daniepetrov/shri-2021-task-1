@@ -290,6 +290,9 @@ h1,
 h2,
 h3,
 h4,
+ul,
+li,
+ol,
 p,
 figure,
 figcaption,
@@ -297,6 +300,11 @@ blockquote,
 dl,
 dd {
   margin: 0;
+}
+
+ul,
+ol {
+  padding-left: 0;
 }
 
 body {

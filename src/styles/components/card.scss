@@ -2,14 +2,20 @@
   $self: &;
   position: relative;
   max-width: 104px;
+  width: 100%;
   display: flex;
   padding: 20px 4px 16px;
   flex-direction: column;
   border-radius: 6px;
   text-align: center;
+  // overflow: hidden;
   align-items: center;
   user-select: none;
   cursor: pointer;
+
+  &__content {
+    width: 100%;
+  }
 
   &__avatar {
     position: relative;
@@ -23,6 +29,11 @@
     align-items: center;
     justify-content: center;
 
+    @include media-sphone() {
+      width: 56px;
+      height: 56px;
+    }
+
     @include light() {
       background-image: url('../public/images/no-image-light.png');
 
@@ -32,6 +43,7 @@
     }
 
     @include dark() {
+      filter: grayscale(1);
       background-image: url('../public/images/no-image-dark.png');
     }
   }
@@ -52,6 +64,10 @@
     word-wrap: break-word;
     -webkit-box-orient: vertical;
     box-orient: vertical;
+
+    @include media-sphone {
+      font-size: 0.875rem;
+    }
   }
 
   &__name + &__caption {
@@ -60,6 +76,9 @@
 
   &__caption {
     @include text-caption;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: var(--color-light-grey);
 
     &--strange {
@@ -74,7 +93,11 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: -1px;
+    top: -5px;
+
+    @include media-sphone() {
+      font-size: 28px;
+    }
   }
 
   &:hover {
