@@ -49,7 +49,7 @@
   }
 
   &__avatar + &__content {
-    margin-top: 6px;
+    margin-top: 7px;
   }
 
   &__name {
@@ -64,6 +64,7 @@
     word-wrap: break-word;
     -webkit-box-orient: vertical;
     box-orient: vertical;
+    word-spacing: 9999px;
 
     @include media-sphone {
       font-size: 0.875rem;
