@@ -18,3 +18,15 @@ export const html = String.raw
 Array.prototype.mapj = function (...args) {
   return this.map(...args).join('')
 }
+
+export function chunk(arr, len) {
+  var chunks = [],
+    i = 0,
+    n = arr.length
+
+  while (i < n) {
+    chunks.push(arr.slice(i, (i += len)))
+  }
+
+  return chunks
+}

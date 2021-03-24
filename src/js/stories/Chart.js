@@ -10,14 +10,12 @@ const getHeight = (value, data) => {
 }
 
 const Chart = (data) => {
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const itemAct = document.querySelector('.chart__item--active')
-      const chartInner = document.querySelector('.chart__inner')
-      const offsetLeft = itemAct.offsetLeft
-      chartInner.scrollLeft = offsetLeft - window.innerWidth + CHART_OFFSET
-    }, 400)
-  })
+  setTimeout(() => {
+    const itemAct = document.querySelector('.chart__item--active')
+    const chartInner = document.querySelector('.chart__inner')
+    const offsetLeft = itemAct.offsetLeft
+    chartInner.scrollLeft = offsetLeft - window.innerWidth + CHART_OFFSET
+  }, 400)
 
   return html`
     <div class="story chart">
@@ -54,7 +52,7 @@ const Chart = (data) => {
                   <li class="chart__people-column">
                     <div class="card card--horizontal">
                       <div class="card__avatar">
-                        <img src=${`/images/1x/${user.avatar}`} alt="" class="card__avatar-img" />
+                        <img src="/images/1x/${user.avatar}" alt="" class="card__avatar-img" />
                       </div>
                       <div class="card__content">
                         <div class="card__name">${user.name}</div>
