@@ -9,15 +9,11 @@
 }
 
 .story__content {
-  padding-top: 20px;
   height: inherit;
-
-  @include media-sphone() {
-    padding-top: 16px;
-  }
 }
 
 .story__heading {
+  padding-top: 20px;
   @include text-heading;
   margin-bottom: 8px;
 
@@ -27,13 +23,13 @@
 
   @include media-sphone() {
     font-size: 1.5rem;
+    padding-top: 16px;
   }
 }
 
 .story__caption {
   @include text-body;
-  color: var(--color-light-grey);
-  margin-bottom: 5px;
+  color: var(--color-text-secondary);
 
   @include landscape() {
     text-align: center;
