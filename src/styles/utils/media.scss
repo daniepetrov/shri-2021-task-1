@@ -4,6 +4,12 @@
   }
 }
 
+@mixin portrait() {
+  @media screen and (orientation: portrait) {
+    @content;
+  }
+}
+
 @mixin landscape() {
   @media screen and (orientation: landscape) {
     @content;

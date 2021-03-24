@@ -29,6 +29,7 @@
 
 .story__caption {
   @include text-body;
+
   color: var(--color-text-secondary);
 
   @include landscape() {

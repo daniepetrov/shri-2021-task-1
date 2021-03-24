@@ -12,9 +12,11 @@ const getHeight = (value, data) => {
 const Chart = (data) => {
   setTimeout(() => {
     const itemAct = document.querySelector('.chart__item--active')
-    const chartInner = document.querySelector('.chart__inner')
-    const offsetLeft = itemAct.offsetLeft
-    chartInner.scrollLeft = offsetLeft - window.innerWidth + CHART_OFFSET
+    if (itemAct) {
+      const chartInner = document.querySelector('.chart__inner')
+      const offsetLeft = itemAct.offsetLeft
+      chartInner.scrollLeft = offsetLeft - window.innerWidth + CHART_OFFSET
+    }
   }, 400)
 
   return html`

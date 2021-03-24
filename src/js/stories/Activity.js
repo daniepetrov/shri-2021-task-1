@@ -13,7 +13,7 @@ const getVerticalStats = (data) => {
     }
     i++
   }
-  return chunk(arr, 28)
+  return arr
 }
 
 const getStatsHor = (data) => {
@@ -39,39 +39,65 @@ const Activity = (data) => {
 
   const initialData = data.data
   const statsVer = getVerticalStats(initialData)
-
+  const offsetedStats = chunk(
+    statsVer.map((item, i) => i),
+    7,
+  ).reduce((acc, item, i) => ((i + 1) % 2 === 0 ? acc.concat(item) : acc), [])
   const statsHor = getStatsHor(initialData)
 
   return html`
     <div class="story">
       <div class="story__container">
-        <div class="story__content content">
+        <div class="story__content activity__content">
           <div class="story__heading">${data.title}</div>
-          <h2 class="story__subheading">${data.subtitle}</h2>
-          <div className="isometric">
-            <div class="isometric__inner">
-              ${statsVer.mapj(
-                (item) =>
-                  html`
-                    <div class="isometric__map">
-                      ${item.mapj((block) => {
-                        const svg = Object.keys(heatMap).find((el) =>
-                          heatMap[el].range.includes(block),
-                        )
-                        return html`
-                          <div class="isometric__item">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 ${heatMap[svg].width} ${heatMap[svg].height}"
-                            >
-                              <use xlink:href="#${svg}-dark"></use>
-                            </svg>
-                          </div>
-                        `
-                      })}
-                    </div>
-                  `,
-              )}
+          <h2 class="story__caption">${data.subtitle}</h2>
+          <div class="heatmap activity__heatmap activity__heatmap--ver">
+            ${statsVer.mapj((item, i) => {
+              const svg = Object.keys(heatMap).find((el) => heatMap[el].range.includes(item))
+              const isOffseted = offsetedStats.includes(i)
+              return html`
+                <div
+                  class="heatmap__item heatmap__item--${svg} ${isOffseted
+                    ? `heatmap__item--offseted`
+                    : ''}"
+                >
+                  <div class="heatmap__item-bar"></div>
+                </div>
+              `
+            })}
+          </div>
+          <div class="heatmap activity__heatmap activity__heatmap--hor">
+            ${statsHor.mapj((item, i) => {
+              const svg = Object.keys(heatMap).find((el) => heatMap[el].range.includes(item))
+              console.log(svg)
+              // const isOffseted = offsetedStats.includes(i)
+              return html`
+                <div class="heatmap__item heatmap__item--${svg}">
+                  <div class="heatmap__item-bar"></div>
+                </div>
+              `
+            })}
+          </div>
+          <div class="activity__ranges ranges">
+            <div class="ranges__item">
+              <div class="ranges__bar"></div>
+              <div class="ranges__value">1 час</div>
+            </div>
+            <div class="ranges__item">
+              <div class="ranges__bar"></div>
+              <div class="ranges__value">0</div>
+            </div>
+            <div class="ranges__item">
+              <div class="ranges__bar"></div>
+              <div class="ranges__value">1 — 2</div>
+            </div>
+            <div class="ranges__item">
+              <div class="ranges__bar"></div>
+              <div class="ranges__value">3 — 4</div>
+            </div>
+            <div class="ranges__item">
+              <div class="ranges__bar"></div>
+              <div class="ranges__value">5 — 6</div>
             </div>
           </div>
         </div>
