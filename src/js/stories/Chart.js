@@ -10,28 +10,45 @@ const getHeight = (value, data) => {
 }
 
 const Chart = (data) => {
-  setTimeout(() => {
-    const itemAct = document.querySelector('.chart__item--active')
-    if (itemAct) {
-      const chartInner = document.querySelector('.chart__inner')
-      const offsetLeft = itemAct.offsetLeft
-      chartInner.scrollLeft = offsetLeft - window.innerWidth + CHART_OFFSET
-    }
-  }, 400)
+  // Можно просто сдвигать к активному бару
+  // setTimeout(() => {
+  //   const itemAct = document.querySelector('.chart__item--active')
+  //   if (itemAct) {
+  //     const chartGrid = document.querySelector('.chart__grid')
+  //     const offsetLeft = itemAct.offsetLeft
+  //     chartGrid.style.transform = `translateX(-${offsetLeft - window.innerWidth + CHART_OFFSET}px)`
+  //     // chartInner.scrollLeft = offsetLeft - window.innerWidth + CHART_OFFSET
+  //   }
+  // }, 400)
+
+  // eсли до acitve всегда есть до 6  элементов, а после него до 2 элементо, то ок, но по хорошему,
+  // набо бы делать прокрутку :)
+
+  const values = data.values.sort((a, b) => a.title - b.title)
+  const active = values.findIndex((item) => item.active)
+
+  const classesMap = {
+    [active - 3]: 'threeBefore',
+    [active - 6]: 'sixBefore',
+    [active + 2]: 'twoAfter',
+    [active]: 'active',
+  }
+
+  const chartItemClass = (i) => (classesMap[i] ? `chart__item--${classesMap[i]}` : '')
 
   return html`
     <div class="story chart">
       <div class="story__container">
         <div class="story__content chart__content">
-          <div class="story__heading">${data.title}</div>
+          <h1 class="story__heading">${data.title}</h1>
           <h2 class="story__caption">${data.subtitle}</h2>
           <div class="chart__inner">
             <div class="chart__grid">
-              ${data.values.mapj(
-                (item) =>
+              ${values.mapj(
+                (item, i) =>
                   html`
                     <div
-                      class="chart__item ${If(item.active, 'chart__item--active')}"
+                      class="chart__item ${chartItemClass(i)}"
                       style="max-height: ${getHeight(item.value, data)}"
                     >
                       ${If(

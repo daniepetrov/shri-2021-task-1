@@ -6,23 +6,31 @@
   flex-direction: column;
   // align-items: center;
 }
+
+.activity__caption {
+  margin-bottom: 16px;
+}
+
 .activity__heatmap {
   margin-top: auto;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
   align-items: flex-end;
   margin-bottom: auto;
-  padding: 10.6% 3.2% 0 3.2%;
 
-  @include media-sphone() {
-    @media screen and (max-height: 480px) {
-      padding: 10.6% 11% 0 11%;
-    }
-  }
+  padding: 10.6% 3.6% 3.6%;
+
+  // @include media-sphone() {
+  //   @media screen and (max-height: 480px) {
+  //     padding: 10.6% 11% 0;
+  //   }
+  // }
 
   &--hor {
+    padding: 10% 16% 0;
+    grid-template-columns: repeat(12, 1fr);
     @include landscape() {
       display: grid;
+      margin-bottom: 1.5%;
     }
 
     @include portrait() {
@@ -31,12 +39,25 @@
   }
 
   &--ver {
+    margin: auto;
+    width: 100%;
+    max-width: 50vmax;
+    grid-template-columns: repeat(7, 1fr);
+
     @include landscape() {
       display: none;
     }
 
     @include portrait() {
       display: grid;
+    }
+
+    @include media-sphone() {
+      max-width: 46vmax;
+    }
+
+    @media screen and (min-width: 768px) {
+      max-width: 55vmax;
     }
   }
 }
@@ -117,13 +138,23 @@
 
 .activity__ranges {
   margin-top: auto;
-  margin-bottom: 24px;
   display: grid;
   grid-column-gap: 8px;
+  padding: 24px 0;
   grid-template-columns: repeat(5, 1fr);
 
   @include media-sphone() {
-    margin-bottom: 16px;
+    padding: 16px 0;
+  }
+}
+.ranges-wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 50vmax;
+
+  @include landscape() {
+    width: 53.64%;
+    margin-bottom: auto;
   }
 }
 
@@ -131,6 +162,7 @@
   $self: &;
 
   &__item {
+    user-select: none;
     &:nth-of-type(1) {
       padding-top: 4px;
       #{$self}__bar {
@@ -281,5 +313,9 @@
   &__value {
     @include text-body;
     color: var(--color-text-secondary);
+
+    @include landscape() {
+      text-align: center;
+    }
   }
 }

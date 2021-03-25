@@ -106,15 +106,14 @@
     box-shadow: var(--shadow-secondary-1);
   }
 
-  &:active,
+  &:active {
+    background-image: var(--grad-primary-1);
+    box-shadow: var(--shadow-primary-1);
+  }
+
   &--active {
     background-image: var(--grad-primary-1);
     box-shadow: var(--shadow-primary-1);
-
-    &:hover {
-      background-image: var(--grad-primary-1);
-      box-shadow: var(--shadow-primary-1);
-    }
   }
 
   &--blank {

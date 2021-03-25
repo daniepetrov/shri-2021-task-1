@@ -5,7 +5,7 @@
 .story__container {
   @include container;
   height: inherit;
-  max-width: 1280px;
+  max-width: 1920px;
 }
 
 .story__content {
@@ -29,6 +29,7 @@
 
 .story__caption {
   @include text-body;
+  margin-bottom: 20px;
 
   color: var(--color-text-secondary);
 

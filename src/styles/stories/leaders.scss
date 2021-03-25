@@ -117,6 +117,12 @@
   .leaders__chosen {
     margin-top: auto;
 
+    .card__caption {
+      @include light() {
+        color: var(--color-text-primary);
+      }
+    }
+
     @include landscape() {
       display: none;
     }

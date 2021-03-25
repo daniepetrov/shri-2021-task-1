@@ -2,7 +2,7 @@ const express = require('express');
 // const data = require('./public/data/data.json');
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 // const DEFAULT_THEME = 'dark';
 
 // renderTemplate = (alias, data) => {

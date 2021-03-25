@@ -11,7 +11,6 @@
   margin-right: -24px;
   min-height: 150px;
   height: 49.4%;
-  overflow: auto;
   margin-top: auto;
   @include hide-scrollbar();
 
@@ -24,34 +23,72 @@
   display: grid;
   height: 100%;
   margin: 0 auto;
-  grid-column-gap: 24px;
+  width: 100%;
+  justify-content: space-between;
   grid-auto-columns: min-content;
   grid-auto-flow: column;
   align-items: flex-end;
-  padding-left: 24px;
-  padding-right: 24px;
-  width: max-content;
+  padding-right: 17px;
+  transform: translateX(-7px);
+  max-width: 90vmax;
+
+  @include media-sphone() {
+    max-width: none;
+  }
+
+  @media screen and (orientation: landscape), (min-width: 768px) {
+    padding: 0 24px;
+    transform: none;
+  }
 }
 
 .chart__item {
   width: 40px;
-  overflow: hidden;
   text-overflow: ellipsis;
   height: 100%;
   max-height: 100%;
   display: flex;
-  opacity: 0;
+  // opacity: 0;
   flex-direction: column;
   justify-content: flex-end;
   user-select: none;
   // animation: grow 1.5s 0.4s ease, appear 0.8s 0.4s ease forwards;
-  animation: appear 0.8s 0.4s ease forwards;
+  // animation: appear 0.8s 0.4s ease forwards;
+
+  display: none;
+
+  &--active,
+  &--active + &,
+  &--active + & + & {
+    display: flex;
+  }
+
+  &--threeBefore,
+  &--threeBefore ~ & {
+    display: flex;
+  }
+
+  &--twoAfter ~ & {
+    display: none;
+  }
+
+  @media screen and (orientation: landscape), (min-width: 768px) {
+    &--sixBefore,
+    &--sixBefore ~ & {
+      display: flex;
+    }
+    &--twoAfter ~ & {
+      display: none;
+    }
+  }
 }
 
 .chart__item-top {
   @include text-subheading();
   margin-bottom: 8px;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .chart__item-top + .chart__item-bar {
@@ -101,19 +138,39 @@
     flex-direction: row;
     justify-content: center;
     padding: 24px 0;
+    margin-bottom: auto;
   }
 
-  @media screen and (min-width: 568px) {
+  @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: center;
     padding: 24px 0;
+    max-width: 80vmax;
+    width: 100%;
+    margin: 0 auto auto auto;
   }
+
+  .card__content {
+    overflow: hidden;
+  }
+
+  .card__name {
+    white-space: nowrap;
+  }
+
+  // @media screen and (min-width: 768px) and (orientation: portrait) {
+  //   margin-bottom: auto;
+  // }
+
+  // @media screen and (min-width: 1024px) {
+  //   margin-bottom: auto;
+  // }
 }
 
 .chart__people-column {
   padding: 16px 0;
 
-  @include landscape() {
+  @media screen and (min-width: 768px), (orientation: landscape) {
     width: 50%;
     padding: 0 16px;
     max-width: 300px;
@@ -152,7 +209,7 @@
       opacity: 0.3;
       bottom: 100%;
 
-      @include landscape() {
+      @media screen and (min-width: 768px), (orientation: landscape) {
         height: auto;
         width: 2px;
         right: auto;
@@ -165,7 +222,14 @@
 
   &:nth-of-type(2) ~ & {
     display: none;
+
     @media screen and (min-width: 768px) {
+      display: block;
+    }
+  }
+
+  &:nth-of-type(2) + & {
+    @media screen and (min-height: 736px) {
       display: block;
     }
   }

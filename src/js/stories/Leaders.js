@@ -23,7 +23,7 @@ const Leaders = (data) => {
     <div class="story leaders">
       <div class="story__container">
         <div class="story__content leaders__content">
-          <div class="story__heading">${data.title}</div>
+          <h1 class="story__heading">${data.title}</h1>
           <h2 class="story__caption">${data.subtitle}</h2>
           <ul class="leaders__chart">
             ${users.mapj(

@@ -1,5 +1,6 @@
 @import 'styles/utils/modern-normalize.scss';
 @import 'styles/utils/media.scss';
+@import 'styles/utils/functions.scss';
 @import 'styles/utils/mixins.scss';
 @import 'styles/main.scss';
 @import 'styles/components/card.scss';
@@ -9,4 +10,5 @@
 @import 'styles/stories/leaders.scss';
 @import 'styles/stories/vote.scss';
 @import 'styles/stories/chart.scss';
+@import 'styles/stories/diagram.scss';
 @import 'styles/stories/activity.scss';
