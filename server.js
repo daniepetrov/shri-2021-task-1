@@ -1,50 +1,52 @@
-const express = require('express');
-// const data = require('./public/data/data.json');
 
-const app = express();
-const PORT = process.env.PORT || 8080;
-// const DEFAULT_THEME = 'dark';
+const express = require('express')
+const data = require('./public/data/data.json')
 
-// renderTemplate = (alias, data) => {
-//   const templateData = data.find(item => item.alias === alias).data;
-//   switch (alias) {
-//     case 'leaders':
-//       return `<h1>${templateData.title}</h1>`
-//     case 'vote':
-//       return `<h2>${templateData.title}</h2>`
-//     default:
-//       return `<h1>${templateData.title}</h1>`
-//   }
-// }
+const app = express()
+const PORT = process.env.PORT || 8080
 
-// const Html = (theme, story) => `
-//     <!DOCTYPE html>
-//     <html>
-//         <head>
-//             <meta charset="utf-8">
-//             <meta name="viewport" content="width=device-width, initial-scale=1">
-//             <title> SSR Preact App </title>
-//         </head>
-//         <body class="theme_${theme}">
-//         ${story}
-//         </body>
+const DEFAULT_THEME = 'dark'
 
-//         <script>
-//         window.renderTemplate=${renderTemplate};
-//         </script>
-//     </html>`;
+const renderFavicons = (theme) => {
+  return `
+    <link rel="shortcut icon" href="/favicon-${theme}.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-${theme}-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-${theme}-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-${theme}-48x48.png" />
+  `
+}
 
-app.use(express.static('build'));
+const renderHtml = (theme, alias, data) =>
+  `<!DOCTYPE html>
+    <html lang="ru">
+      <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        ${renderFavicons(theme)}
+        <title>Школа разработки интерфейсов - Задание 1</title>
+        <script src="/stories.js"></script>
+        <link href="/stories.css" rel="stylesheet" />
+      </head>
+      <body class="theme_${theme}"></body>
+      <script>
+        const body = document.querySelector('body');
+        body.innerHTML = window.renderTemplate('${alias}', ${JSON.stringify(data)})
+      </script>
+    </html>`
 
-// app.get('**', (req, res) => {
-//   const theme = req.query.theme === 'light' ? 'light' : DEFAULT_THEME;
-//   const slide = Number(req.query.slide) || 0;
-//   const alias = data[slide].alias;
-//   const story = renderTemplate(alias, data)
+app.use(express.static('build'))
 
-//   res.send(Html(theme, story, renderTemplate));
-// });
+app.get('**', (req, res) => {
+  const theme = req.query.theme === 'light' ? 'light' : DEFAULT_THEME
+  const slide = Number(req.query.slide)
+  const index = slide - 1
+  const alias = Boolean(data[index]) ? data[index].alias : data[0].alias
+  const storyData = Boolean(data[index]) ? data[index].data : data[0].data
+  res.send(renderHtml(theme, alias, storyData))
+})
 
-app.listen(PORT, () =>
-  console.log(`🧸 Express server started and localhost:${PORT}`),
-);
+app.listen(PORT, () => console.log(`🧸 Express server started and localhost:${PORT}`))

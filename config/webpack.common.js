@@ -1,6 +1,6 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PrettierPlugin = require('prettier-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 // const ESLintPlugin = require('eslint-webpack-plugin')
@@ -38,11 +38,11 @@ module.exports = {
 
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
-    new HtmlWebpackPlugin({
-      title: 'Школа разработки интерфейсов - Задание 1',
-      template: paths.src + '/template.html', // template file
-      filename: 'index.html', // output file
-    }),
+    // new HtmlWebpackPlugin({
+    //   title: 'Школа разработки интерфейсов - Задание 1',
+    //   template: paths.src + '/template.html', // template file
+    //   filename: 'index.html', // output file
+    // }),
 
     // // ESLint configuration
     // new ESLintPlugin({
