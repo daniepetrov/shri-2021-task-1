@@ -30,7 +30,7 @@ const Leaders = (data) => {
               (user, i) =>
                 html`
                   <li class="leaders__item ${If(i === 0, 'leaders__item--active')}">
-                    <div class="card card--blank">
+                    <div class="card">
                       ${Emoji(data, i)}
                       <div class="card__avatar">
                         <img src=${`/images/1x/${user.avatar}`} alt="" class="card__avatar-img" />
@@ -46,7 +46,7 @@ const Leaders = (data) => {
                         ${selectedUser && !users.slice(0, 3).includes(selectedUser) && i === 0
                           ? html`
                               <div class="leaders__chosen">
-                                <div class="card card--blank">
+                                <div class="card">
                                   <div class="card__emoji">👍</div>
                                   <div class="card__avatar">
                                     <img

@@ -91,7 +91,7 @@ const Activity = (data) => {
             <div class="activity__ranges ranges">
               <div class="ranges__item">
                 <div class="ranges__bar"></div>
-                <div class="ranges__value">1 час</div>
+                <div class="ranges__value"></div>
               </div>
               <div class="ranges__item">
                 <div class="ranges__bar"></div>

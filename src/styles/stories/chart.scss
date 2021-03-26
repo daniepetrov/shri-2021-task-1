@@ -10,12 +10,14 @@
   margin-left: -24px;
   margin-right: -24px;
   min-height: 150px;
-  height: 49.4%;
+  height: 40.42%;
   margin-top: auto;
+  margin-bottom: 30px;
   @include hide-scrollbar();
 
   @include landscape() {
-    height: 47.6%;
+    height: 31%;
+    min-height: auto;
   }
 }
 
@@ -43,6 +45,7 @@
 }
 
 .chart__item {
+  position: relative;
   width: 40px;
   text-overflow: ellipsis;
   height: 100%;
@@ -56,6 +59,26 @@
   // animation: appear 0.8s 0.4s ease forwards;
 
   display: none;
+
+  &--active {
+    .bar {
+      @include dark() {
+        background: radial-gradient(81.14% 100% at 50% 0%, #ffa300 0%, #2d1c00 100%);
+        box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.4),
+          inset 0px 6px 15px rgba(255, 162, 0, 0.5);
+      }
+
+      @include light() {
+        background: linear-gradient(180deg, #fff2d1 0.82%, #ffd66c 100%);
+        box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5),
+          inset 0px 0px 20px rgba(255, 176, 57, 0.8);
+      }
+    }
+
+    .chart__item-top {
+      color: var(--color-text-primary);
+    }
+  }
 
   &--active,
   &--active + &,
@@ -89,6 +112,11 @@
   text-align: center;
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-text-secondary);
 }
 
 .chart__item-top + .chart__item-bar {
@@ -103,7 +131,11 @@
 }
 
 .chart__item-bottom {
-  @include text-caption();
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  @include text-body();
   margin-top: 12px;
   text-align: center;
   color: var(--color-text-secondary);
@@ -138,7 +170,10 @@
     flex-direction: row;
     justify-content: center;
     padding: 24px 0;
-    margin-bottom: auto;
+    width: 100%;
+    max-width: 75.7vmax;
+    margin: 0 auto;
+    // margin-bottom: auto;
   }
 
   @media screen and (min-width: 768px) {

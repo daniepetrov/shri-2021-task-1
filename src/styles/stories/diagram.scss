@@ -91,6 +91,7 @@
 
     @include landscape() {
       padding: 0 20%;
+      margin-right: -4px;
     }
   }
 
@@ -109,6 +110,10 @@
 
   &__total + &__total-diff {
     margin-top: 8px;
+
+    @include landscape() {
+      margin-top: 6px;
+    }
   }
 
   &__total-diff {
@@ -154,6 +159,7 @@
       height: 2px;
       right: 0;
       background-color: var(--color-text-secondary);
+      opacity: 0.3;
     }
   }
 
@@ -270,5 +276,10 @@
 
   &__diff + &__value {
     margin-left: em(16);
+
+    @include landscape() {
+      margin-left: em(18);
+      margin-right: em(2);
+    }
   }
 }

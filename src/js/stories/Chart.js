@@ -5,7 +5,7 @@ const If = (condition, render) => (condition ? render : '')
 
 const getHeight = (value, data) => {
   const maxHeightValue = data.values.find((item) => item.active).value
-  const height = ((value / maxHeightValue) * 100).toFixed()
+  const height = (value / maxHeightValue) * 100
   return +height === 0 ? 'auto' : `${height}%`
 }
 

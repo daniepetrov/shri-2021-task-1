@@ -10,11 +10,13 @@
   display: flex;
   align-items: flex-end;
   padding-left: 0;
-  height: 73vh;
+  height: 72.9%;
   margin-top: auto;
+  justify-content: center;
+  width: 100%;
 
   @include landscape() {
-    height: 72vh;
+    height: 72.2%;
   }
 }
 
@@ -22,20 +24,35 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  flex: 1;
+
+  @media screen and (min-width: 576px) {
+    flex: 1;
+    width: auto;
+  }
+
+  @include landscape() {
+  }
 
   &:nth-of-type(1) {
     order: 1;
     z-index: 2;
     height: 100%;
-    flex-grow: 1.1538;
+    width: 37%;
+
+    @include landscape() {
+      width: 19.2%;
+    }
   }
 
   &:nth-of-type(2) {
-    height: 90%;
+    height: 89.7%;
     order: 1;
     z-index: 1;
     align-items: flex-end;
+
+    @include landscape() {
+      height: 92.2%;
+    }
 
     .leaders__bar {
       width: calc(100% + 16px);
@@ -50,6 +67,10 @@
     z-index: 1;
     height: 90%;
     align-items: flex-start;
+
+    @include landscape() {
+      height: 92.2%;
+    }
 
     @media screen and (max-width: 567px) and (orientation: portrait) {
       height: 79.46661%;
@@ -115,10 +136,13 @@
   }
 
   .leaders__chosen {
-    margin-top: auto;
+    margin-top: 67px;
 
     .card__caption {
       @include light() {
+        color: var(--color-text-primary);
+      }
+      @include dark() {
         color: var(--color-text-primary);
       }
     }

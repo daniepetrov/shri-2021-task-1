@@ -6,20 +6,20 @@
 }
 
 @mixin text-heading() {
-  font-size: 1.875rem;
-  line-height: 1.0666;
+  font-size: rem(30);
+  line-height: em(32, 30);
   font-weight: bold;
 }
 
 @mixin text-subheading() {
-  font-size: 1.25rem;
-  line-height: 1.1;
+  font-size: rem(20);
+  line-height: em(22, 20);
   font-weight: bold;
 }
 
 @mixin text-caption() {
-  font-size: 0.875rem;
-  line-height: 1.14285;
+  font-size: rem(14);
+  line-height: em(16, 14);
   font-weight: normal;
 }
 
