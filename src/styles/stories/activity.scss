@@ -16,7 +16,11 @@
   display: grid;
   align-items: flex-end;
   margin-bottom: auto;
-  padding: 13.3% 3.6% 3.6%;
+  padding: 14% 3.3% 3.6%;
+
+  @include landscape() {
+    padding: 13.3% 3.6% 3.6%;
+  }
 
   // @include media-sphone() {
   //   @media screen and (max-height: 480px) {
@@ -77,8 +81,12 @@
   &__item {
     position: relative;
     height: 0;
-    padding-bottom: 38.5%;
+    padding-bottom: 38.3%;
     left: -25%;
+
+    @include landscape() {
+      padding-bottom: 38.5%
+    }
 
     &--min {
       #{$self}__item-bar {

@@ -44,14 +44,14 @@ module.exports = {
     //   filename: 'index.html', // output file
     // }),
 
-    // // ESLint configuration
+    // ESLint configuration
     // new ESLintPlugin({
     //   files: ['.', 'src', 'config'],
     //   formatter: 'table',
     // }),
 
     // Prettier configuration
-    new PrettierPlugin(),
+    // new PrettierPlugin(),
     // new FaviconsWebpackPlugin({
     //   logo: paths.src + '/logo.png',
     //   outputPath: '.',
@@ -78,10 +78,10 @@ module.exports = {
       { test: /\.js$/, use: ['babel-loader'] },
 
       // Images: Copy image files to build folder
-      { test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' },
+      { test: /\.(?:ico|gif|png|jpg|jpeg|ttf|svg)$/i, type: 'asset/resource' },
 
       // Fonts and SVGs: Inline files
-      { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
+      // { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
     ],
   },
 }

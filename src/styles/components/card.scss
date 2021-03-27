@@ -80,7 +80,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--color-text-secondary);
+    color: var(--color-light-grey);
 
     &--strange {
       color: var(--color-text-primary);
@@ -94,7 +94,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: -3px;
+    top: -2px;
 
     @include media-sphone() {
       font-size: 28px;
@@ -127,7 +127,19 @@
       }
     }
 
-    &:active,
+    &:active {
+      @include light() {
+        background: linear-gradient(180deg, #fff2d1 0.82%, #ffd66c 100%);
+        box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5),
+          inset 0px 0px 20px rgba(255, 176, 57, 0.8);
+      }
+
+      @include dark() {
+        background: radial-gradient(91.67% 122.17% at 69.17% -11.17%, #ffa300 0%, #2d1c00 100%);
+        box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.4),
+          inset 0px 6px 15px rgba(255, 162, 0, 0.4);
+      }
+    }
     [class*='active'] & {
       @include light() {
         background: linear-gradient(180deg, #fff2d1 0.82%, #ffd66c 100%);
@@ -161,6 +173,14 @@
     #{$self}__avatar + #{$self}__content {
       margin-top: 0;
       margin-left: 14px;
+    }
+
+    #{$self}__caption {
+      color: var(--color-text-secondary);
+
+      &--strange {
+        color: var(--color-text-primary);
+      }
     }
   }
 }

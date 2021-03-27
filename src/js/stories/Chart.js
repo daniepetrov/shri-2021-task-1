@@ -34,7 +34,7 @@ const Chart = (data) => {
     [active]: 'active',
   }
 
-  const chartItemClass = (i) => (classesMap[i] ? `chart__item--${classesMap[i]}` : '')
+  const chartItemClass = (i) => (classesMap[i] ? ` chart__item--${classesMap[i]}` : '')
 
   return html`
     <div class="story chart">
@@ -48,7 +48,7 @@ const Chart = (data) => {
                 (item, i) =>
                   html`
                     <div
-                      class="chart__item ${chartItemClass(i)}"
+                      class="chart__item${chartItemClass(i)}"
                       style="max-height: ${getHeight(item.value, data)}"
                     >
                       ${If(

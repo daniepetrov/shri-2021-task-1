@@ -25,7 +25,7 @@
   flex-direction: column;
   position: relative;
 
-  @media screen and (min-width: 576px) {
+  @media screen and (min-width: 900px) {
     flex: 1;
     width: auto;
   }
@@ -133,6 +133,10 @@
   .bar {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+  }
+
+  .bar__number {
+    padding-top: 1px;
   }
 
   .leaders__chosen {

@@ -16,7 +16,7 @@
   @include hide-scrollbar();
 
   @include landscape() {
-    height: 31%;
+    height: 30.9%;
     min-height: auto;
   }
 }
@@ -31,7 +31,7 @@
   grid-auto-flow: column;
   align-items: flex-end;
   padding-right: 17px;
-  transform: translateX(-7px);
+  transform: translateX(-8px);
   max-width: 90vmax;
 
   @include media-sphone() {
@@ -39,7 +39,7 @@
   }
 
   @media screen and (orientation: landscape), (min-width: 768px) {
-    padding: 0 24px;
+    padding: 0 25px;
     transform: none;
   }
 }
@@ -207,7 +207,7 @@
 
   @media screen and (min-width: 768px), (orientation: landscape) {
     width: 50%;
-    padding: 0 16px;
+    padding: 0 16.5px;
     max-width: 300px;
   }
 

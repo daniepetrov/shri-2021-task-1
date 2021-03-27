@@ -56,23 +56,19 @@
     padding-bottom: 100%;
     background-size: 100% auto;
     background-repeat: no-repeat;
+    background-position: 50% 50%;
     margin: auto;
 
     @include landscape() {
       margin: 0;
     }
-
-    // @include media-sphone() {
-    //   width: 80%;
-    //   padding-bottom: 80%;
-    // }
-
     @include light() {
       background-image: url('../public/images/svg/diagram-light.svg');
     }
 
     @include dark() {
-      background-image: url('../public/images/svg/diagram-light.svg');
+      background-image: url('../public/images/svg/diagram-dark.svg');
+      background-size: 107% auto;
     }
   }
 
