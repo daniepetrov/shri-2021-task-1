@@ -1,10 +1,3 @@
-import { html } from './../utils'
-
-// const getOffsetedUsers = (data) => [
-//   data.users[data.offset],
-//   ...data.users.filter((el, i) => i !== data.offset),
-// ]
-
 const Vote = (data) => {
   const VOTE_COUNT = 8
   const users = data.users.slice(0, VOTE_COUNT)
@@ -13,7 +6,7 @@ const Vote = (data) => {
 
   const If = (condition, render) => (condition ? render : '')
 
-  return html`
+  return `
     <div class="story vote">
       <div class="story__container">
         <div class="story__content vote__content">
@@ -22,7 +15,7 @@ const Vote = (data) => {
           <ul class="vote__grid">
             ${users.mapj(
               (user, i) =>
-                html`
+                `
                   <li class="vote__item vote__item--${i + 1} ${If(i === 1, 'vote__item--active')}">
                     <div
                       data-action="update"
@@ -36,7 +29,7 @@ const Vote = (data) => {
                       )}"
                     >
                       ${selectedUser && i === selectedUserIndex
-                        ? html`<div class="card__emoji">👍</div>`
+                        ? `<div class="card__emoji">👍</div>`
                         : ''}
                       <div class="card__avatar">
                         <img src=${`/images/1x/${user.avatar}`} alt="" class="card__avatar-img" />

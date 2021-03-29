@@ -42,6 +42,14 @@
     padding: 0 25px;
     transform: none;
   }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 80vmax;
+  }
+
+  @media screen and (min-width: 1200px) {
+    max-width: 70vmax;
+  }
 }
 
 .chart__item {
@@ -51,12 +59,9 @@
   height: 100%;
   max-height: 100%;
   display: flex;
-  // opacity: 0;
   flex-direction: column;
   justify-content: flex-end;
   user-select: none;
-  // animation: grow 1.5s 0.4s ease, appear 0.8s 0.4s ease forwards;
-  // animation: appear 0.8s 0.4s ease forwards;
 
   display: none;
 
@@ -117,6 +122,10 @@
   left: 50%;
   transform: translateX(-50%);
   color: var(--color-text-secondary);
+
+  @include media-sphone() {
+    @include text-body()
+  }
 }
 
 .chart__item-top + .chart__item-bar {
@@ -192,14 +201,6 @@
   .card__name {
     white-space: nowrap;
   }
-
-  // @media screen and (min-width: 768px) and (orientation: portrait) {
-  //   margin-bottom: auto;
-  // }
-
-  // @media screen and (min-width: 1024px) {
-  //   margin-bottom: auto;
-  // }
 }
 
 .chart__people-column {

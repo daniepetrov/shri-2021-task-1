@@ -1,9 +1,7 @@
-import { html } from '../utils'
-
 const Defs = (alias) => {
   switch (alias) {
     case 'vote':
-      return html`
+      return `
         <div class="defs" style="height: 0;position: absolute;opacity: 0;">
           <svg
             fill="none"

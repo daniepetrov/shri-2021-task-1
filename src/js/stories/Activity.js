@@ -1,4 +1,4 @@
-import { html, chunk } from '../utils'
+import { chunk } from '../utils'
 
 const getVerticalStats = (data) => {
   const keys = Object.keys(data)
@@ -51,7 +51,7 @@ const Activity = (data) => {
     12,
   ).reduce((acc, item, i) => ((i + 1) % 2 === 0 ? acc.concat(item) : acc), [])
 
-  return html`
+  return `
     <div class="story">
       <div class="story__container">
         <div class="story__content activity__content">
@@ -61,7 +61,7 @@ const Activity = (data) => {
             ${statsVer.mapj((item, i) => {
               const svg = Object.keys(rangesMap).find((el) => rangesMap[el].range.includes(item))
               const isOffseted = offsetedStatsVer.includes(i)
-              return html`
+              return `
                 <div
                   class="heatmap__item heatmap__item--${svg} ${isOffseted
                     ? `heatmap__item--offseted`
@@ -76,7 +76,7 @@ const Activity = (data) => {
             ${statsHor.mapj((item, i) => {
               const svg = Object.keys(rangesMap).find((el) => rangesMap[el].range.includes(item))
               const isOffseted = offsetedStatsHor.includes(i)
-              return html`
+              return `
                 <div
                   class="heatmap__item heatmap__item--${svg} ${isOffseted
                     ? `heatmap__item--offseted`

@@ -8,7 +8,6 @@
   flex-direction: column;
   border-radius: 6px;
   text-align: center;
-  // overflow: hidden;
   align-items: center;
   user-select: none;
   cursor: pointer;
@@ -35,16 +34,13 @@
     }
 
     @include light() {
-      background-image: url('../public/images/no-image-light.png');
+      background-image: url('../public/images/1x/no-image-light.png');
 
-      @include retina() {
-        background-image: url('../public/images/no-image-light.png');
-      }
     }
 
     @include dark() {
       filter: grayscale(1);
-      background-image: url('../public/images/no-image-dark.png');
+      background-image: url('../public/images/1x/no-image-dark.png');
     }
   }
 

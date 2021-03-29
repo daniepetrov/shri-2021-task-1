@@ -1,5 +1,3 @@
-import { html } from '../utils'
-
 const Diagram = (data) => {
   const circleNames = ['xl', 'lg', 'md', 'sm']
   const circleClass = (i) => (circleNames[i] ? `diagram-row__circle--${circleNames[i]}` : '')
@@ -9,7 +7,7 @@ const Diagram = (data) => {
     return String(text).replace(reg, '')
   }
 
-  return html`
+  return `
     <div class="story diagram">
       <div class="story__container">
         <div class="story__content diagram__content">
@@ -25,7 +23,7 @@ const Diagram = (data) => {
             <div class="diagram__table">
               ${data.categories.mapj(
                 (category, i) =>
-                  html`
+                  `
                     <div class="diagram-row">
                       <div class="diagram-row__circle ${circleClass(i)}"></div>
                       <div class="diagram-row__title">${category.title}</div>
