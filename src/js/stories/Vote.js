@@ -1,12 +1,12 @@
+import { html } from './../utils'
 const Vote = (data) => {
-  const VOTE_COUNT = 8
-  const users = data.users.slice(0, VOTE_COUNT)
-  const selectedUserIndex = data.users.findIndex((user) => user.id === data.selectedUserId) || false
-  const selectedUser = selectedUserIndex && data.users[selectedUserIndex]
-
+  const USERS_MAX_COUNT = 8
+  const offset = data.offset || 0
+  const sliceCount = offset + USERS_MAX_COUNT
+  const users = data.users.slice(offset, sliceCount)
   const If = (condition, render) => (condition ? render : '')
 
-  return `
+  return html`
     <div class="story vote">
       <div class="story__container">
         <div class="story__content vote__content">
@@ -15,22 +15,20 @@ const Vote = (data) => {
           <ul class="vote__grid">
             ${users.mapj(
               (user, i) =>
-                `
-                  <li class="vote__item vote__item--${i + 1} ${If(i === 1, 'vote__item--active')}">
+                html`
+                  <li class="vote__item vote__item--${i + 1} ${If(
+                  user.id === data.selectedUserId,
+                  'vote__item--active',
+                )}">
                     <div
                       data-action="update"
                       data-params=${JSON.stringify({
                         alias: 'leaders',
                         data: { selectedUserId: user.id },
                       })}
-                      class="card card--normal ${If(
-                        selectedUser && i === selectedUserIndex,
-                        'card--active',
-                      )}"
+                      class="card card--normal"
                     >
-                      ${selectedUser && i === selectedUserIndex
-                        ? `<div class="card__emoji">👍</div>`
-                        : ''}
+                    ${If(user.id === data.selectedUserId, `<div class="card__emoji">👍</div>`)}
                       <div class="card__avatar">
                         <img src=${`/images/1x/${user.avatar}`} alt="" class="card__avatar-img" />
                       </div>
@@ -44,7 +42,7 @@ const Vote = (data) => {
             <li class="vote__button vote__button--1">
               <button
                 class="arrow-button arrow-button--reversed"
-                disabled
+                ${offset === 0 && 'disabled'}
                 data-action="update"
                 data-params=${JSON.stringify({ alias: 'vote', data: { offset: 0 } })}
               >
@@ -56,8 +54,9 @@ const Vote = (data) => {
             <li class="vote__button vote__button--2">
               <button
                 class="arrow-button arrow-button"
+                ${offset !== 0 && 'disabled'}
                 data-action="update"
-                data-params=${JSON.stringify({ alias: 'vote', data: { offset: data.offset } })}
+                data-params=${JSON.stringify({ alias: 'vote', data: { offset: data.offset || 0 } })}
               >
                 <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <use xlink:href="#arrow-button" />
