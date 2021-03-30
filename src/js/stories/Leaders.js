@@ -1,3 +1,5 @@
+import { If } from './../utils'
+
 const Leaders = (data) => {
   const LEADERS_COUNT = 5
   const users = data.users.slice(0, LEADERS_COUNT)
@@ -17,8 +19,6 @@ const Leaders = (data) => {
     }
     return ''
   }
-
-  const If = (condition, render) => (condition ? render : '')
 
   return `
     <div class="story leaders">
@@ -49,31 +49,29 @@ const Leaders = (data) => {
                   <div class="leaders__bar">
                     <div class="bar">
                       <div class="bar__number">${newUserIndex + 1}</div>
-                      ${
-                        i === 0 && selectedUser && !data.users.slice(0, 3).includes(selectedUser)
-                          ? `
-                              <div class="leaders__chosen">
+                      ${If(
+                        i === 0 && selectedUser && !data.users.slice(0, 3).includes(selectedUser),
+                        `<div class="leaders__chosen">
                                 <div class="card">
                                   <div class="card__emoji">👍</div>
                                   <div class="card__avatar">
                                     <img
-                                      src=${`/images/1x/${selectedUser.avatar}`}
+                                      src="/images/1x/${selectedUser?.avatar}"
                                       alt=""
                                       class="card__avatar-img"
                                     />
                                   </div>
                                   <div class="card__content">
-                                    <div class="card__name">${selectedUser.name}</div>
-                                    <div class="card__caption">${selectedUser.valueText}</div>
+                                    <div class="card__name">${selectedUser?.name}</div>
+                                    <div class="card__caption">${selectedUser?.valueText}</div>
                                   </div>
                                 </div>
                                 <div class="bar__number bar__number--bordered">
                                   ${selectedUserIndex + 1}
                                 </div>
                               </div>
-                            `
-                          : ''
-                      }
+                            `,
+                      )}
                     </div>
                   </div>
                 </li>

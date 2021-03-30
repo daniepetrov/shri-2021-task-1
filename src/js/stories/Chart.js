@@ -1,13 +1,6 @@
-const If = (condition, render) => (condition ? render : '')
-
-const getHeight = (value, data) => {
-  const maxHeightValue = data.values.find((item) => item.active).value
-  const height = (value / maxHeightValue) * 100
-  return +height === 0 ? 'auto' : `${height}%`
-}
+import { If, getChartHeight } from './../utils'
 
 const Chart = (data) => {
-
   const values = data.values.sort((a, b) => a.title - b.title)
   const active = values.findIndex((item) => item.active)
 
@@ -30,15 +23,11 @@ const Chart = (data) => {
             <div class="chart__grid">
               ${values.mapj(
                 (item, i) =>
-                  `
-                    <div
+                  `<div
                       class="chart__item${chartItemClass(i)}"
-                      style="max-height: ${getHeight(item.value, data)}"
+                      style="max-height: ${getChartHeight(item.value, data)}"
                     >
-                      ${If(
-                        Boolean(item.value),
-                        `<div class="chart__item-top">${item.value}</div>`,
-                      )}
+                      ${If(Boolean(item.value), `<div class="chart__item-top">${item.value}</div>`)}
                       <div class="chart__item-bar">
                         <div class="bar"></div>
                       </div>
@@ -51,8 +40,7 @@ const Chart = (data) => {
           <div class="chart__people">
             ${data.users.mapj(
               (user) =>
-                `
-                  <li class="chart__people-column">
+                `<li class="chart__people-column">
                     <div class="card card--horizontal">
                       <div class="card__avatar">
                         <img src="/images/1x/${user.avatar}" alt="" class="card__avatar-img" />

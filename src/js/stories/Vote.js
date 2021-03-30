@@ -1,12 +1,12 @@
-import { html } from './../utils'
+import { If } from './../utils'
+
 const Vote = (data) => {
   const USERS_MAX_COUNT = 8
   const offset = data.offset || 0
   const sliceCount = offset + USERS_MAX_COUNT
   const users = data.users.slice(offset, sliceCount)
-  const If = (condition, render) => (condition ? render : '')
 
-  return html`
+  return `
     <div class="story vote">
       <div class="story__container">
         <div class="story__content vote__content">
@@ -15,7 +15,7 @@ const Vote = (data) => {
           <ul class="vote__grid">
             ${users.mapj(
               (user, i) =>
-                html`
+                `
                   <li class="vote__item vote__item--${i + 1} ${If(
                   user.id === data.selectedUserId,
                   'vote__item--active',

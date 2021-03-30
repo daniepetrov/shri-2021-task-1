@@ -1,33 +1,4 @@
-import { chunk } from '../utils'
-
-const getVerticalStats = (data) => {
-  const keys = Object.keys(data)
-  const length = data[keys[0]].length
-
-  let i = 0
-  const arr = []
-
-  while (i < length) {
-    for (let j = 0; j < keys.length; j++) {
-      arr.push(data[keys[j]][i])
-    }
-    i++
-  }
-  return arr
-}
-
-const getStatsHor = (data) => {
-  return Object.keys(data).reduce(
-    (acc, item) => [
-      ...acc,
-      ...data[item].reduce(
-        (acc, item, i, arr) => ((i + 1) % 2 === 0 ? [...acc, item + arr[i - 1]] : acc),
-        [],
-      ),
-    ],
-    [],
-  )
-}
+import { chunk, If, getHorStats, getVerticalStats } from '../utils'
 
 const Activity = (data) => {
   const rangesMap = {
@@ -39,7 +10,7 @@ const Activity = (data) => {
 
   const initialData = data.data
   const statsVer = getVerticalStats(initialData)
-  const statsHor = getStatsHor(initialData)
+  const statsHor = getHorStats(initialData)
 
   const offsetedStatsVer = chunk(
     statsVer.map((item, i) => i),
@@ -63,10 +34,10 @@ const Activity = (data) => {
               const isOffseted = offsetedStatsVer.includes(i)
               return `
                 <div
-                  class="heatmap__item heatmap__item--${svg} ${isOffseted
-                    ? `heatmap__item--offseted`
-                    : ''}"
-                >
+                  class="heatmap__item heatmap__item--${svg} ${If(
+                isOffseted,
+                `heatmap__item--offseted`,
+              )}">
                   <div class="heatmap__item-bar"></div>
                 </div>
               `
@@ -77,11 +48,10 @@ const Activity = (data) => {
               const svg = Object.keys(rangesMap).find((el) => rangesMap[el].range.includes(item))
               const isOffseted = offsetedStatsHor.includes(i)
               return `
-                <div
-                  class="heatmap__item heatmap__item--${svg} ${isOffseted
-                    ? `heatmap__item--offseted`
-                    : ''}"
-                >
+                <div class="heatmap__item heatmap__item--${svg} ${If(
+                isOffseted,
+                `heatmap__item--offseted`,
+              )}">
                   <div class="heatmap__item-bar"></div>
                 </div>
               `
