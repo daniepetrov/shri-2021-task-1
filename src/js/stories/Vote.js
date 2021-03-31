@@ -6,6 +6,7 @@ const Vote = (data) => {
   const sliceCount = offset + USERS_MAX_COUNT
   const users = data.users.slice(offset, sliceCount)
 
+
   return `
     <div class="story vote">
       <div class="story__container">
@@ -46,9 +47,19 @@ const Vote = (data) => {
                 data-action="update"
                 data-params=${JSON.stringify({ alias: 'vote', data: { offset: 0 } })}
               >
-                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <use xlink:href="#arrow-button" />
-                </svg>
+              <svg
+              fill="none"
+              viewBox="0 0 64 64"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                  id="arrow-button"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M32 62c16.569 0 30-13.431 30-30C62 15.431 48.569 2 32 2 15.431 2 2 15.431 2 32c0 16.569 13.431 30 30 30zm0 2c17.673 0 32-14.327 32-32C64 14.327 49.673 0 32 0 14.327 0 0 14.327 0 32c0 17.673 14.327 32 32 32zm27-32c0 14.912-12.088 27-27 27S5 46.912 5 32 17.088 5 32 5s27 12.088 27 27zm-33.94-4.06a1.5 1.5 0 00-2.12 2.12l8 8a1.5 1.5 0 002.12 0l8-8a1.5 1.5 0 00-2.12-2.12L32 34.878l-6.94-6.94z"
+                  fill="currentColor"
+                />
+            </svg>
               </button>
             </li>
             <li class="vote__button vote__button--2">
@@ -56,11 +67,21 @@ const Vote = (data) => {
                 class="arrow-button arrow-button"
                 ${offset !== 0 && 'disabled'}
                 data-action="update"
-                data-params=${JSON.stringify({ alias: 'vote', data: { offset: data.offset || 0 } })}
+                data-params=${JSON.stringify({ alias: 'vote', data: { offset: USERS_MAX_COUNT } })}
               >
-                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <use xlink:href="#arrow-button" />
-                </svg>
+              <svg
+              fill="none"
+              viewBox="0 0 64 64"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                  id="arrow-button"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M32 62c16.569 0 30-13.431 30-30C62 15.431 48.569 2 32 2 15.431 2 2 15.431 2 32c0 16.569 13.431 30 30 30zm0 2c17.673 0 32-14.327 32-32C64 14.327 49.673 0 32 0 14.327 0 0 14.327 0 32c0 17.673 14.327 32 32 32zm27-32c0 14.912-12.088 27-27 27S5 46.912 5 32 17.088 5 32 5s27 12.088 27 27zm-33.94-4.06a1.5 1.5 0 00-2.12 2.12l8 8a1.5 1.5 0 002.12 0l8-8a1.5 1.5 0 00-2.12-2.12L32 34.878l-6.94-6.94z"
+                  fill="currentColor"
+                />
+            </svg>
               </button>
             </li>
           </ul>
